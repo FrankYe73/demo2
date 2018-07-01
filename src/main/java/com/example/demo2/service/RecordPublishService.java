@@ -1,6 +1,8 @@
 package com.example.demo2.service;
 
 import com.example.demo2.dao.RecordDao;
+import com.example.demo2.model.PublishStatus;
+import com.example.demo2.model.PublishStatusSummary;
 import com.example.demo2.model.Record;
 import com.example.demo2.model.TaskType;
 import org.slf4j.Logger;
@@ -31,6 +33,16 @@ public class RecordPublishService extends PublishServiceTemplate<Record, Record>
     @Override
     protected void markUnderProcess(List<Integer> underProcessList) {
         dao.markUnderProcess(underProcessList);
+    }
+
+    @Override
+    public PublishStatusSummary getPublishStatus() {
+        //TODO: call dao to get information
+        return PublishStatusSummary.builder()
+                .status(PublishStatus.PARTIAL_SUCCESS)
+                .successCount(234)
+                .failedCount(3)
+                .build();
     }
 
 

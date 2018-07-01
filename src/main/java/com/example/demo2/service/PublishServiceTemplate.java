@@ -170,4 +170,5 @@ public abstract class PublishServiceTemplate<T, S> {
     protected abstract TaskType getTaskType();
     protected abstract List<Integer> retrieveAllIds();
     protected abstract void markUnderProcess(List<Integer> successIdList);
+    public abstract PublishStatusSummary getPublishStatus();
 }

@@ -1,10 +1,7 @@
 package com.example.demo2.service;
 
 import com.example.demo2.dao.StudentDao;
-import com.example.demo2.model.Record;
-import com.example.demo2.model.Student;
-import com.example.demo2.model.StudentPublishModel;
-import com.example.demo2.model.TaskType;
+import com.example.demo2.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +30,17 @@ public class StudentPublishService extends PublishServiceTemplate<Student, Stude
     @Override
     protected void markUnderProcess(List<Integer> underProcessList) {
         dao.markUnderProcess(underProcessList);
+    }
+
+    @Override
+    public PublishStatusSummary getPublishStatus() {
+        //TODO: call dao to get information
+        return PublishStatusSummary.builder()
+                .status(PublishStatus.UNDER_PROCESS)
+                .successCount(123)
+                .failedCount(4)
+                .underProcessCount(16)
+                .build();
     }
 
     // publish on demand methods -----------------------------------------------------------------
